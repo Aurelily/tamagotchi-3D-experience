@@ -28,7 +28,7 @@ export default function Overlay() {
       <div
         style={{ position: "absolute", top: 30, left: 30, fontSize: "13px" }}
       >
-        <h1>Tamagotchi 3D Experience</h1>
+        <img src="./logo.png" alt="Tamagotchi 3D configurator" width={400} />
         <p>
           Use your mouse to rotate, <br />
           zoom and explore <br />
