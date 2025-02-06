@@ -25,16 +25,16 @@ export default function Overlay() {
         </p>
         <img src="./linkedin.png" alt="linkedin" width={30} />
       </a>
-      <div
-        style={{ position: "absolute", top: 30, left: 30, fontSize: "13px" }}
-      >
-        <h1>Tamagotchi 3D Experience</h1>
-        <p>
-          Use your mouse to rotate, <br />
-          zoom and explore <br />
-          your tamagotchi experience !
-        </p>
-        <img src="./mouse.png" alt="mouse" />
+      <div className="menu-container">
+        <div className= "configurator-bg">
+          <img src="./logos/logo-mocha.png" alt="Tamagotchi" width={400} />
+          <div className="buttons-container">
+            <a href=""><img src="./buttons/bt-mocha.png" alt="Mocha cat" /></a>
+            <a href=""><img src="./buttons/bt-fruty.png" alt="Fruty ty" /></a>
+            <a href=""><img src="./buttons/bt-egg.png" alt="Egg Muffin" /></a>
+            <a href=""><img src="./buttons/bt-tea.png" alt="Green tea" /></a> 
+          </div>
+        </div>
       </div>
       <div
         style={{
