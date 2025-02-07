@@ -35,10 +35,11 @@ svg {
   fill: black;
 }
 
-.menu-container{
+/* OVERLAY
+------------------------------------------------*/
 
-
-  width: 300px;
+.menu-container {
+  width: 20%;
   margin-left: 50px;
 }
 
@@ -48,25 +49,32 @@ svg {
   align-items: center;
   justify-content: start;
   font-size: "13px";
-  width: 300px;
-  height: 1000px;
-  border-radius: 313px;
+  width: 100%;
+  border-radius: 300px;
   background: rgba(255, 255, 255, 0.2);
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(5px);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  padding-top: 250px;
-  margin-top: -200px;
+  padding-top: 80%;
+  padding-bottom: 20%;
+  margin-top: -80%;
+}
+
+.configurator-bg img {
+  width: 100%;
 }
 
 .buttons-container img {
-  width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 50%;
   margin: 10px;
   cursor: pointer;
 }
 
-.buttons-container{
+.buttons-container {
   display: flex;
   flex-direction: column;
   align-items: center;

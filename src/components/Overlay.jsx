@@ -18,7 +18,6 @@ export default function Overlay() {
           <b>Created by Aurelie PREAUD</b>
         </p>
         <p>
-          {" "}
           I'm open for working on your 3D / ThreeJS project,
           <br />
           Contact me by LinkedIn
@@ -26,14 +25,15 @@ export default function Overlay() {
         <img src="./linkedin.png" alt="linkedin" width={30} />
       </a>
       <div className="menu-container">
-        <div className= "configurator-bg">
-          <img src="./logos/logo-mocha.png" alt="Tamagotchi" width={400} />
+        <div className="configurator-bg">
+          <img src="./logos/logo-mocha.png" alt="Tamagotchi" />
           <div className="buttons-container">
-            <a href=""><img src="./buttons/bt-mocha.png" alt="Mocha cat" /></a>
-            <a href=""><img src="./buttons/bt-fruty.png" alt="Fruty ty" /></a>
-            <a href=""><img src="./buttons/bt-egg.png" alt="Egg Muffin" /></a>
-            <a href=""><img src="./buttons/bt-tea.png" alt="Green tea" /></a> 
+            <img src="./buttons/bt-mocha.png" alt="Mocha cat" />
+            <img src="./buttons/bt-fruty.png" alt="Fruty ty" />
+            <img src="./buttons/bt-egg.png" alt="Egg Muffin" />
+            <img src="./buttons/bt-tea.png" alt="Green tea" />
           </div>
+          l
         </div>
       </div>
       <div
