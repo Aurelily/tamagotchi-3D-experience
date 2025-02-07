@@ -1,7 +1,7 @@
 import { useControlsStore } from "../store";
 
 export default function Overlay() {
-  const { autoRotate, toggleAutoRotate } = useControlsStore();
+  const { autoRotate, toggleAutoRotate, setModelUrl } = useControlsStore();
 
   return (
     <div
@@ -9,7 +9,7 @@ export default function Overlay() {
         position: "absolute",
         top: 0,
         left: 0,
-        pointerEvents: "none",
+        pointerEvents: "none", // Désactive les interactions globales
         width: "100%",
         height: "100%",
       }}
@@ -22,7 +22,7 @@ export default function Overlay() {
           bottom: 30,
           left: 30,
           fontSize: "13px",
-          pointerEvents: "auto",
+          pointerEvents: "auto", // Active les interactions sur le lien
         }}
       >
         <p>
@@ -37,14 +37,34 @@ export default function Overlay() {
       </a>
 
       {/* Conteneur du menu */}
-      <div className="menu-container">
+      <div className="menu-container" style={{ pointerEvents: "auto" }}> {/* ✅ Active les interactions ici */}
         <div className="configurator-bg">
           <img src="./logos/logo-mocha.png" alt="Tamagotchi" />
           <div className="buttons-container">
-            <img src="./buttons/bt-mocha.png" alt="Mocha cat" />
-            <img src="./buttons/bt-fruty.png" alt="Fruty ty" />
-            <img src="./buttons/bt-egg.png" alt="Egg Muffin" />
-            <img src="./buttons/bt-tea.png" alt="Green tea" />
+            <img
+              src="./buttons/bt-mocha.png"
+              alt="Mocha cat"
+              onClick={() => setModelUrl("./models/Tamagotchi/tamagotchi-mocha.glb")}
+              style={{ cursor: "pointer" }}
+            />
+            <img
+              src="./buttons/bt-fruty.png"
+              alt="Fruty ty"
+              onClick={() => setModelUrl("./models/Tamagotchi/tamagotchi-frutyty.glb")}
+              style={{ cursor: "pointer" }}
+            />
+            <img
+              src="./buttons/bt-egg.png"
+              alt="Egg Muffin"
+              onClick={() => setModelUrl("./models/Tamagotchi/tamagotchi-egg.glb")}
+              style={{ cursor: "pointer" }}
+            />
+            <img
+              src="./buttons/bt-tea.png"
+              alt="Green tea"
+              onClick={() => setModelUrl("./models/Tamagotchi/tamagotchi-tea.glb")}
+              style={{ cursor: "pointer" }}
+            />
           </div>
         </div>
       </div>
@@ -59,7 +79,7 @@ export default function Overlay() {
           padding: "10px",
           borderRadius: "5px",
           color: "white",
-          pointerEvents: "auto", // Permet de cliquer sur le bouton
+          pointerEvents: "auto", // ✅ Permet de cliquer sur le bouton
         }}
       >
         <button

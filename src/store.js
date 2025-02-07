@@ -1,6 +1,11 @@
 import { create } from "zustand";
 
 export const useControlsStore = create((set) => ({
-  autoRotate: true, // Rotation activée par défaut
-  toggleAutoRotate: () => set((state) => ({ autoRotate: !state.autoRotate })),
+  autoRotate: false,
+  toggleAutoRotate: () =>
+    set((state) => ({ autoRotate: !state.autoRotate })),
+
+  // ✅ État pour stocker le modèle chargé
+  modelUrl: "./models/Tamagotchi/tamagotchi-mocha.glb",
+  setModelUrl: (url) => set({ modelUrl: url }),
 }));

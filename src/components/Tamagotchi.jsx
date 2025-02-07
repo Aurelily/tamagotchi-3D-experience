@@ -6,9 +6,11 @@ import {
   Float,
 } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
+import { useControlsStore } from "../store"; // Importer le store Zustand
 
 export default function Tamagotchi(props) {
-  const tamagotchi = useGLTF("./models/Tamagotchi/tamagotchi.glb");
+  const { modelUrl } = useControlsStore(); // ✅ Récupérer le modèle actuel
+  const tamagotchi = useGLTF(modelUrl); // Charger dynamiquement le bon modèle
   const [frameIndex, setFrameIndex] = useState(0);
   const textures = useTexture(
     Array.from(
@@ -28,21 +30,20 @@ export default function Tamagotchi(props) {
 
         materials.forEach((mat) => {
           if (mat.name === "screen-1") {
-            // console.log(`✅ Matériau "screen-1" trouvé sur "${child.name}"`);
             mat.map = textures[frameIndex];
             mat.map.needsUpdate = true;
-
-            // Vérifier si l'inversion des UVs a déjà été faite
-            if (!child.geometry.attributes.uv._flipped) {
-              const uvAttribute = child.geometry.attributes.uv;
-              for (let i = 0; i < uvAttribute.count; i++) {
-                uvAttribute.setY(i, 1 - uvAttribute.getY(i)); // Inverser l'axe Y
-              }
-              uvAttribute.needsUpdate = true;
-              child.geometry.attributes.uv._flipped = true; // Marquer l'inversion comme faite
-            }
           }
         });
+
+        // 🔄 Réinversion des UVs pour corriger l'affichage
+        if (child.geometry.attributes.uv && !child.geometry.attributes.uv._flipped) {
+          const uvAttribute = child.geometry.attributes.uv;
+          for (let i = 0; i < uvAttribute.count; i++) {
+            uvAttribute.setY(i, 1 - uvAttribute.getY(i)); // Inverser Y
+          }
+          uvAttribute.needsUpdate = true;
+          child.geometry.attributes.uv._flipped = true; // Éviter de le refaire à chaque frame
+        }
       }
     });
   }, [tamagotchi, textures, frameIndex]);
@@ -51,32 +52,25 @@ export default function Tamagotchi(props) {
     if (textures.length === 26) {
       intervalRef.current = setInterval(() => {
         setFrameIndex((prev) => (prev + 1) % 26);
-      }, 100); // Change d'image toutes les 100ms (10 FPS)
+      }, 100);
     }
 
     return () => clearInterval(intervalRef.current);
   }, [textures]);
 
   return (
-    <>
-      <Float
-        speed={3} // Animation speed, defaults to 1
-        rotationIntensity={1} // XYZ rotation intensity, defaults to 1
-        floatIntensity={0.5} // Up/down float intensity, works like a multiplier with floatingRange,defaults to 1
-        floatingRange={[-0.1, 0]} // Range of y-axis values the object will float within, defaults to [-0.1,0.1]
-      >
-        <Center top>
-          <PresentationControls
-            global
-            config={{ mass: 1, tension: 100 }}
-            snap={{ mass: 1, tension: 500 }}
-            rotation={[0, 0.3, 0]}
-            polar={[-Math.PI / 5, Math.PI / 5]}
-          >
-            <primitive {...props} object={tamagotchi.scene} castShadow />
-          </PresentationControls>
-        </Center>
-      </Float>
-    </>
+    <Float speed={3} rotationIntensity={1} floatIntensity={0.5} floatingRange={[-0.1, 0]}>
+      <Center top>
+        <PresentationControls
+          global
+          config={{ mass: 1, tension: 100 }}
+          snap={{ mass: 1, tension: 500 }}
+          rotation={[0, 0.3, 0]}
+          polar={[-Math.PI / 5, Math.PI / 5]}
+        >
+          <primitive {...props} object={tamagotchi.scene} castShadow />
+        </PresentationControls>
+      </Center>
+    </Float>
   );
 }
