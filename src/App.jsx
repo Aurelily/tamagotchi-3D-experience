@@ -1,12 +1,15 @@
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
+import { useControlsStore } from "./store"; // Import Zustand
 
 import Tamagotchi from "./components/Tamagotchi";
 import Env from "./components/Env";
-import Loader from "./components/Loader"; // Import du Loader
+import Loader from "./components/Loader";
 
 export default function App() {
+  const autoRotate = useControlsStore((state) => state.autoRotate); // Lire l’état global
+
   return (
     <Canvas shadows camera={{ position: [0, 0, 6], fov: 25 }}>
       <Suspense fallback={<Loader />}>
@@ -19,7 +22,7 @@ export default function App() {
       </Suspense>
 
       <OrbitControls
-        autoRotate={true}
+        autoRotate={autoRotate} // Dynamique selon Zustand
         autoRotateSpeed={6}
         enablePan={false}
         enableZoom={true}

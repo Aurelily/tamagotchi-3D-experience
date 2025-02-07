@@ -1,4 +1,8 @@
+import { useControlsStore } from "../store";
+
 export default function Overlay() {
+  const { autoRotate, toggleAutoRotate } = useControlsStore();
+
   return (
     <div
       style={{
@@ -10,9 +14,16 @@ export default function Overlay() {
         height: "100%",
       }}
     >
+      {/* Lien LinkedIn */}
       <a
         href="https://www.linkedin.com/in/aureliepreaud/"
-        style={{ position: "absolute", bottom: 30, left: 30, fontSize: "13px" }}
+        style={{
+          position: "absolute",
+          bottom: 30,
+          left: 30,
+          fontSize: "13px",
+          pointerEvents: "auto",
+        }}
       >
         <p>
           <b>Created by Aurelie PREAUD</b>
@@ -24,6 +35,8 @@ export default function Overlay() {
         </p>
         <img src="./linkedin.png" alt="linkedin" width={30} />
       </a>
+
+      {/* Conteneur du menu */}
       <div className="menu-container">
         <div className="configurator-bg">
           <img src="./logos/logo-mocha.png" alt="Tamagotchi" />
@@ -33,9 +46,38 @@ export default function Overlay() {
             <img src="./buttons/bt-egg.png" alt="Egg Muffin" />
             <img src="./buttons/bt-tea.png" alt="Green tea" />
           </div>
-          l
         </div>
       </div>
+
+      {/* Bouton de contrôle de la rotation */}
+      <div
+        style={{
+          position: "absolute",
+          top: 20,
+          right: 20,
+          background: "rgba(0, 0, 0, 0.7)",
+          padding: "10px",
+          borderRadius: "5px",
+          color: "white",
+          pointerEvents: "auto", // Permet de cliquer sur le bouton
+        }}
+      >
+        <button
+          onClick={toggleAutoRotate}
+          style={{
+            padding: "10px",
+            cursor: "pointer",
+            background: "#ffcc00",
+            border: "none",
+            borderRadius: "5px",
+            fontWeight: "bold",
+          }}
+        >
+          {autoRotate ? "Désactiver Rotation" : "Activer Rotation"}
+        </button>
+      </div>
+
+      {/* Footer */}
       <div
         style={{
           position: "absolute",
