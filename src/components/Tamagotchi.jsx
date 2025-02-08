@@ -15,7 +15,7 @@ export default function Tamagotchi(props) {
   const textures = useTexture(
     Array.from(
       { length: 26 },
-      (_, i) => `./textures/test-cat.jpg${String(i + 1).padStart(4, "0")}.png`
+      (_, i) => `./textures/cat${String(i + 1).padStart(4, "0")}.png`
     )
   );
 
