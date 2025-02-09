@@ -146,7 +146,8 @@ export default function Overlay() {
       
         }}>
         <img src="./mouse.png" alt="Mouse"  />
-        <p>You can use your mouse to grab, zoom in and manipulate the model !</p>
+        <p>You can use your mouse to grab, zoom in
+        <br />and manipulate the model !</p>
       </div>
     </div>
   );

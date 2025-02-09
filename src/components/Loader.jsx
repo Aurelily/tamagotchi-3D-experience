@@ -6,7 +6,7 @@ export default function Loader() {
   return active ? (
     <Html center>
       <div style={{ width: "200px", textAlign: "center" }}>
-        <span>Chargement...</span>
+        <span>Loading...</span>
         <div
           style={{
             width: "100%",
