@@ -110,3 +110,45 @@ svg {
 .footer, .linkedin-link {
   animation: none; /* Pas d'animation pour le footer et le lien LinkedIn */
 }
+
+/* MEDIA QUERY
+------------------------------------------------*/
+
+@media (max-width: 768px) {
+  /* Changement global de la mise en page */
+  .menu-container {
+    width: 100%;
+   margin: 0px;
+    padding: 10px 20px;
+  }
+
+  /* Modifier l'overlay pour un affichage plus compact en mobile */
+  .configurator-bg {
+    border-radius: 0;
+    padding-bottom: 1%;
+    padding-top: 80%;
+  }
+
+  /* Boutons en ligne, les empiler sur 2 lignes si nécessaire */
+  .buttons-container {
+    flex-direction: row;
+    flex-wrap: wrap; /* Les boutons peuvent s'afficher sur plusieurs lignes */
+    justify-content: space-evenly; /* Les boutons prennent toute la largeur */
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .buttons-container img {
+    width: 45%; /* Prendre 45% de la largeur */
+    margin: 5px;
+  }
+    /* Cacher le logo dynamique */
+    .logo-dynamique {
+      display: none;
+    }
+  
+    /* Cacher l'image du curseur et le texte associé */
+    .mouse-info {
+      display: none;
+    }
+}

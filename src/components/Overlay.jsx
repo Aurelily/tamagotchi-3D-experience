@@ -31,8 +31,8 @@ export default function Overlay() {
       {/* Conteneur du menu */}
       <div className="menu-container" style={{ pointerEvents: "auto" }}>
         <div className="configurator-bg">
-          {/* ✅ Logo dynamique */}
-          <img src={logoUrl} alt="Tamagotchi Logo" />
+           {/* ✅ Logo dynamique */}
+          <img className="logo-dynamique" src={logoUrl} alt="Tamagotchi Logo" />
 
           <div className="buttons-container">
             <img
@@ -73,20 +73,44 @@ export default function Overlay() {
             />
           </div>
 
-          {/* 🔄 Switch Toggle pour la rotation */}
-          <div
-            style={{
-              marginTop: "40px",
-              background: "rgb(247, 0, 255)",
-              padding: "10px",
-              borderRadius: "30px",
-              color: "white",
-              pointerEvents: "auto",
-              display: "flex",
-              alignItems: "center",
-              justifyContent: "center",
-            }}
-          >
+
+        </div>
+      </div>
+
+      {/* Footer */}
+      <div className="footer" style={{ position: "absolute", bottom: 30, right: 30, fontSize: "13px" }}>
+        Blender3D - ThreeJS - R3F - February 2025
+      </div>
+      <div className="footer" style={{
+        position: "absolute",
+        top: 30, right: 30,
+        fontSize: "13px",
+        textAlign: "center"
+      
+        }}>
+        {/* Instructions pour l'utilisation de la souris */}
+        <div className="mouse-info">
+          <img src="./mouse.png" alt="Mouse" />
+          <p>You can use your mouse to grab, zoom in
+            <br />and manipulate the model!</p>
+        </div>
+      </div>
+      {/* 🔄 Switch Toggle pour la rotation */}
+      <div
+        style={{
+        width: "200px",
+        marginTop: "2%",
+        marginLeft: "8%",
+        background: "rgb(247, 0, 255)",
+        padding: "1%",
+        borderRadius: "30px",
+        color: "white",
+        pointerEvents: "auto",
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        }}
+        >
             <label
               style={{
                 display: "flex",
@@ -131,24 +155,6 @@ export default function Overlay() {
               </div>
             </label>
           </div>
-        </div>
-      </div>
-
-      {/* Footer */}
-      <div className="footer" style={{ position: "absolute", bottom: 30, right: 30, fontSize: "13px" }}>
-        Blender3D - ThreeJS - R3F - February 2025
-      </div>
-      <div className="footer" style={{
-        position: "absolute",
-        top: 30, right: 30,
-        fontSize: "13px",
-        textAlign: "center"
-      
-        }}>
-        <img src="./mouse.png" alt="Mouse"  />
-        <p>You can use your mouse to grab, zoom in
-        <br />and manipulate the model !</p>
-      </div>
     </div>
   );
 }
