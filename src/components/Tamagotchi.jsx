@@ -13,6 +13,7 @@ export default function Tamagotchi(props) {
   const [frameIndex, setFrameIndex] = useState(0);
   const intervalRef = useRef(null);
   const { scene } = useGLTF(modelUrl);
+  const textureInvertedRef = useRef(false);  // Référence pour marquer l'inversion des UVs
 
   console.log("Render du composant avec modelUrl :", modelUrl);
 
@@ -70,21 +71,23 @@ export default function Tamagotchi(props) {
           }
         });
 
-        if (
-          child.geometry.attributes.uv &&
-          !child.geometry.attributes.uv._flipped
-        ) {
+        // Vérification pour ne pas inverser les UVs à chaque rendu
+        if (child.geometry.attributes.uv && !textureInvertedRef.current) {
           const uvAttribute = child.geometry.attributes.uv;
+
+          // Inversion des UVs sur l'axe Y (bas vers haut)
           for (let i = 0; i < uvAttribute.count; i++) {
             uvAttribute.setY(i, 1 - uvAttribute.getY(i));
           }
+
           uvAttribute.needsUpdate = true;
-          child.geometry.attributes.uv._flipped = true;
+          textureInvertedRef.current = true;  // Marquer que l'inversion est déjà effectuée
         }
       }
     });
   }, [scene, textures, frameIndex]);
 
+  // Pour la mise à jour des frames (animation)
   useEffect(() => {
     if (textures.length !== frameCount) return;
 

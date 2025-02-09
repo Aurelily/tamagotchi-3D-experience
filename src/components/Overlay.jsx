@@ -138,6 +138,16 @@ export default function Overlay() {
       <div className="footer" style={{ position: "absolute", bottom: 30, right: 30, fontSize: "13px" }}>
         Blender3D - ThreeJS - R3F - February 2025
       </div>
+      <div className="footer" style={{
+        position: "absolute",
+        top: 30, right: 30,
+        fontSize: "13px",
+        textAlign: "center"
+      
+        }}>
+        <img src="./mouse.png" alt="Mouse"  />
+        <p>You can use your mouse to grab, zoom in and manipulate the model !</p>
+      </div>
     </div>
   );
 }
