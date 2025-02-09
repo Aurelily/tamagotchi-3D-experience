@@ -27,7 +27,7 @@ export default function Tamagotchi(props) {
     },
     "./models/Tamagotchi/tamagotchi-frutyty.glb": {
       path: "./textures/fruty/fruty",
-      frameCount: 26,
+      frameCount: 43,
     },
     "./models/Tamagotchi/tamagotchi-egg.glb": {
       path: "./textures/chick/chick",
