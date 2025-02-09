@@ -15,7 +15,7 @@ body,
 body {
   overscroll-behavior-y: none;
   background: #f5f5f5;
-  font-family: "Inter var", sans-serif;
+  font-family: "DynaPuff", serif;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   color: black;
@@ -81,4 +81,32 @@ svg {
   justify-content: center;
   width: 300px;
   margin-top: 50px;
+}
+
+/* ANIMATION MENU
+------------------------------------------------*/
+
+@keyframes slideInFromTop {
+  0% {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  60% {
+    transform: translateY(20px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.menu-container {
+  animation: slideInFromTop 1s ease-out; /* Animation du menu uniquement */
+}
+
+.footer, .linkedin-link {
+  animation: none; /* Pas d'animation pour le footer et le lien LinkedIn */
 }
