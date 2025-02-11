@@ -1,19 +1,30 @@
-import { Environment } from "@react-three/drei";
+import { Sky } from "@react-three/drei";
+import { DirectionalLight } from "three";
 
 export default function Env() {
   return (
-    <Environment
-      background={true} // can be true, false or "only" (which only sets the background) (default: false)
-      backgroundBlurriness={0.4} // optional blur factor between 0 and 1 (default: 0, only works with three 0.146 and up)
-      backgroundIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
-      backgroundRotation={[0, Math.PI / 2, 0]} // optional rotation (default: 0, only works with three 0.163 and up)
-      environmentIntensity={1} // optional intensity factor (default: 1, only works with three 0.163 and up)
-      environmentRotation={[0, Math.PI / 2, 0]} // optional rotation (default: 0, only works with three 0.163 and up)
-      files={null}
-      path="/"
-      preset={"apartment"}
-      scene={undefined} // adds the ability to pass a custom THREE.Scene, can also be a ref
-      encoding={undefined} // adds the ability to pass a custom THREE.TextureEncoding (default: THREE.sRGBEncoding for an array of files and THREE.LinearEncoding for a single texture)
-    />
+    <>
+      {/* Ciel avec effets de dégradé et lumière */}
+      <Sky
+        distance={450000} // Distance du ciel
+        sunPosition={[1, 1, 0]} // Position du soleil pour définir les ombres et la lumière
+        inclination={1} // Inclinaison du soleil
+        azimuth={0.25} // Azimut du soleil (contrôle la direction de la lumière)
+        turbidity={10} // Turbidité pour ajuster l'effet de brouillard
+        rayleigh={1} // Augmenter l'azurité pour un ciel plus lumineux et plus vibrant
+        mieCoefficient={2} // Effet de lumière diffuse
+        mieDirectionalG={0.8} // Eclairement diffus
+        exposure={5} // Augmenter légèrement l'exposition pour plus de saturation
+      />
+      {/* Lumière directionnelle pour éclairer la scène */}
+      <directionalLight
+        position={[5, 5, 5]} // Position de la lumière
+        intensity={1.2} // Augmenter l'intensité de la lumière pour plus de contraste et de couleur
+        castShadow={true} // Activer les ombres
+      />
+      {/* Lumière ambiante pour adoucir l'éclairage global */}
+      <ambientLight intensity={0.9} />
+      {/* Réduire l'intensité pour plus de contraste et de saturation */}
+    </>
   );
 }

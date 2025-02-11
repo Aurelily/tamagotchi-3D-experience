@@ -22,7 +22,7 @@ export const useTamagotchiStore = create((set) => ({
         main: "./textures/cat/cat_main.png",
         screen: "./textures/cat/cat",
         frameCount: 26,
-        ring: "#8B5A2B",
+        ring: "#bd8a5b",
         button: "#FFFFFF",
         logo: "./logos/logo-mocha.png",
       },
@@ -30,8 +30,8 @@ export const useTamagotchiStore = create((set) => ({
         main: "./textures/fruty/fruty_main.png",
         screen: "./textures/fruty/fruty",
         frameCount: 43,
-        ring: "#FF69B4",
-        button: "#FF1493",
+        ring: "#27a510",
+        button: "#27a510",
         logo: "./logos/logo-fruty.png",
       },
       egg: {
@@ -39,7 +39,7 @@ export const useTamagotchiStore = create((set) => ({
         screen: "./textures/chick/chick",
         frameCount: 52,
         ring: "#FFFACD",
-        button: "#FFD700",
+        button: "#ffb700",
         logo: "./logos/logo-eggs.png",
       },
       tea: {
