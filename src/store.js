@@ -47,7 +47,7 @@ export const useTamagotchiStore = create((set) => ({
         screen: "./textures/tea/tea",
         frameCount: 26,
         ring: "#98FB98",
-        button: "#32CD32",
+        button: "#27a510",
         logo: "./logos/logo-green.png",
       },
     };

@@ -89,67 +89,30 @@ export default function Overlay() {
             and manipulate the model!
           </p>
         </div>
-      </div>
+        {/* Gros bouton pour la rotation */}
+        <div className="button-rotation">
+          <label>
+            <span style={{ marginRight: "10px" }}>
+              {autoRotate ? "Disable rotation" : "Enable rotation"}
+            </span>
 
-      {/* Gros bouton pour la rotation */}
-      <div
-        style={{
-          width: "200px",
-          marginTop: "2%",
-          marginLeft: "8%",
-          background: "rgb(247, 0, 255)",
-          padding: "1%",
-          borderRadius: "30px",
-          color: "white",
-          pointerEvents: "auto",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-        }}
-      >
-        <label
-          style={{
-            display: "flex",
-            alignItems: "center",
-            cursor: "pointer",
-            fontFamily: "DynaPuff",
-            fontSize: "14px",
-            fontWeight: "bold",
-          }}
-        >
-          <span style={{ marginRight: "10px" }}>
-            {autoRotate ? "Disable rotation" : "Enable rotation"}
-          </span>
-
-          {/* Switch Toggle */}
-          <div
-            onClick={toggleAutoRotate}
-            style={{
-              width: "50px",
-              height: "25px",
-              background: autoRotate ? "#ffcc00" : "#ccc",
-              borderRadius: "20px",
-              position: "relative",
-              transition: "background 0.3s",
-              cursor: "pointer",
-            }}
-          >
+            {/* Switch Toggle */}
             <div
+              className="switch-toggle"
+              onClick={toggleAutoRotate}
               style={{
-                width: "20px",
-                height: "20px",
-                background: "white",
-                borderRadius: "50%",
-                position: "absolute",
-                top: "50%",
-                left: autoRotate ? "26px" : "4px",
-                transform: "translateY(-50%)",
-                transition: "left 0.3s",
-                boxShadow: "0 2px 5px rgba(0,0,0,0.3)",
+                background: autoRotate ? "#ffcc00" : "#ccc",
               }}
-            />
-          </div>
-        </label>
+            >
+              <div
+                className="swith-toggle-cercle"
+                style={{
+                  left: autoRotate ? "26px" : "4px",
+                }}
+              />
+            </div>
+          </label>
+        </div>
       </div>
     </div>
   );
