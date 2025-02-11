@@ -2,7 +2,7 @@ import { useTamagotchiStore } from "../store";
 import "../style.css"; // Importation des styles CSS
 
 export default function Overlay() {
-  const { autoRotate, toggleAutoRotate, setTextures, logoUrl, setLogoUrl } =
+  const { autoRotate, toggleAutoRotate, setTheme, logoUrl } =
     useTamagotchiStore();
 
   return (
@@ -46,70 +46,15 @@ export default function Overlay() {
           <img className="logo-dynamique" src={logoUrl} alt="Tamagotchi Logo" />
 
           <div className="buttons-container">
-            <img
-              src="./buttons/bt-mocha.png"
-              alt="Mocha cat"
-              onClick={() => {
-                setTextures({
-                  "uv-main": "./textures/mocha/main.png",
-                  "uv-screen": "./textures/mocha/screen.png",
-                  "uv-ring": "./textures/mocha/ring.png",
-                  "uv-button1": "./textures/mocha/button1.png",
-                  "uv-button2": "./textures/mocha/button2.png",
-                  "uv-button3": "./textures/mocha/button3.png",
-                });
-                setLogoUrl("./logos/logo-mocha.png");
-              }}
-              className="theme-button"
-            />
-            <img
-              src="./buttons/bt-fruty.png"
-              alt="Fruty ty"
-              onClick={() => {
-                setTextures({
-                  "uv-main": "./textures/fruty/main.png",
-                  "uv-screen": "./textures/fruty/screen.png",
-                  "uv-ring": "./textures/fruty/ring.png",
-                  "uv-button1": "./textures/fruty/button1.png",
-                  "uv-button2": "./textures/fruty/button2.png",
-                  "uv-button3": "./textures/fruty/button3.png",
-                });
-                setLogoUrl("./logos/logo-fruty.png");
-              }}
-              className="theme-button"
-            />
-            <img
-              src="./buttons/bt-egg.png"
-              alt="Egg Muffin"
-              onClick={() => {
-                setTextures({
-                  "uv-main": "./textures/egg/main.png",
-                  "uv-screen": "./textures/egg/screen.png",
-                  "uv-ring": "./textures/egg/ring.png",
-                  "uv-button1": "./textures/egg/button1.png",
-                  "uv-button2": "./textures/egg/button2.png",
-                  "uv-button3": "./textures/egg/button3.png",
-                });
-                setLogoUrl("./logos/logo-eggs.png");
-              }}
-              className="theme-button"
-            />
-            <img
-              src="./buttons/bt-tea.png"
-              alt="Green tea"
-              onClick={() => {
-                setTextures({
-                  "uv-main": "./textures/tea/main.png",
-                  "uv-screen": "./textures/tea/screen.png",
-                  "uv-ring": "./textures/tea/ring.png",
-                  "uv-button1": "./textures/tea/button1.png",
-                  "uv-button2": "./textures/tea/button2.png",
-                  "uv-button3": "./textures/tea/button3.png",
-                });
-                setLogoUrl("./logos/logo-green.png");
-              }}
-              className="theme-button"
-            />
+            {["mocha", "fruty", "egg", "tea"].map((theme) => (
+              <img
+                key={theme}
+                src={`./buttons/bt-${theme}.png`}
+                alt={theme}
+                onClick={() => setTheme(theme)}
+                className="theme-button"
+              />
+            ))}
           </div>
         </div>
       </div>

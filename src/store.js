@@ -8,7 +8,7 @@ export const useTamagotchiStore = create((set) => ({
     main: "./textures/cat/cat_main.png",
     screen: "./textures/cat/cat",
     ring: "#8B5A2B",
-    button: "#FFFFFF", // ✅ Remplace button1, button2, button3 par une seule couleur
+    button: "#FFFFFF",
   },
 
   logoUrl: "./logos/logo-mocha.png",
@@ -23,7 +23,7 @@ export const useTamagotchiStore = create((set) => ({
         screen: "./textures/cat/cat",
         frameCount: 26,
         ring: "#8B5A2B",
-        button: "#FFFFFF", // ✅ Tous les boutons prennent cette couleur
+        button: "#FFFFFF",
         logo: "./logos/logo-mocha.png",
       },
       fruty: {
@@ -59,18 +59,13 @@ export const useTamagotchiStore = create((set) => ({
           main: themes[theme].main,
           screen: themes[theme].screen,
           ring: themes[theme].ring,
-          button: themes[theme].button, // ✅ Tous les boutons prennent cette couleur
+          button: themes[theme].button,
         },
         logoUrl: themes[theme].logo,
         frameCount: themes[theme].frameCount,
       });
+    } else {
+      console.warn(`⚠️ Thème inconnu : ${theme}`);
     }
   },
-
-  setTextures: (newTextures) =>
-    set((state) => ({
-      textures: { ...state.textures, ...newTextures },
-    })),
-
-  setLogoUrl: (newLogoUrl) => set(() => ({ logoUrl: newLogoUrl })),
 }));
