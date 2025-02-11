@@ -13,8 +13,6 @@ export default function TamagotchiCusto(props) {
   const { textures, frameCount } = useTamagotchiStore();
   const { scene } = useGLTF("./models/Tamagotchi/tamagotchi-custom.glb");
 
-  console.log("🔄 Chargement du modèle 3D...", scene);
-
   // Chargement des textures avec vérification
   const mainTexture = textures.main
     ? useLoader(TextureLoader, textures.main)
@@ -35,8 +33,6 @@ export default function TamagotchiCusto(props) {
       texture.needsUpdate = true;
     });
   }
-
-  console.log("🎨 Textures chargées:", textures);
 
   const screenRef = useRef();
 

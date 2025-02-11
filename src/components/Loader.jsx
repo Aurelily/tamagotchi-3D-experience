@@ -21,7 +21,7 @@ export default function Loader() {
             style={{
               width: `${progress}%`, // Remplissage de la barre de progression
               height: "100%",
-              background: "rgb(247, 0, 255)", // Couleur de remplissage (rose)
+              background: "rgb(247, 0, 255)", // Couleur de remplissage de la barre
               transition: "width 0.3s ease-out",
             }}
           />

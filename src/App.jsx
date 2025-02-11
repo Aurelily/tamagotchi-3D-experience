@@ -1,14 +1,14 @@
 import { Canvas } from "@react-three/fiber";
 import { Center, OrbitControls } from "@react-three/drei";
 import { Suspense } from "react";
-import { useTamagotchiStore } from "./store"; // Import Zustand
+import { useTamagotchiStore } from "./store"; // Penser à importer et installer Zustand
 
 import TamagotchiCusto from "./components/TamagotchiCusto";
 import Env from "./components/Env";
-import Loader from "./components/Loader"; // Assurez-vous que le Loader est importé
+import Loader from "./components/Loader";
 
 export default function App() {
-  const autoRotate = useTamagotchiStore((state) => state.autoRotate); // Lire l’état global
+  const autoRotate = useTamagotchiStore((state) => state.autoRotate); // Etat global pour gérer le bouton switch pour la rotation automatique
 
   return (
     <Canvas shadows camera={{ position: [0, 0, 6], fov: 25 }}>
@@ -23,7 +23,7 @@ export default function App() {
       </Suspense>
 
       <OrbitControls
-        autoRotate={autoRotate} // Dynamique selon Zustand
+        autoRotate={autoRotate} // Dynamique avec l'etat global du store Zustand
         autoRotateSpeed={6}
         enablePan={false}
         enableZoom={true}

@@ -42,7 +42,6 @@ export default function Overlay() {
       {/* Conteneur du menu */}
       <div className="menu-container" style={{ pointerEvents: "auto" }}>
         <div className="configurator-bg">
-          {/* ✅ Logo dynamique */}
           <img className="logo-dynamique" src={logoUrl} alt="Tamagotchi Logo" />
 
           <div className="buttons-container">
@@ -92,7 +91,7 @@ export default function Overlay() {
         </div>
       </div>
 
-      {/* 🔄 Switch Toggle pour la rotation */}
+      {/* Gros bouton pour la rotation */}
       <div
         style={{
           width: "200px",

@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tamagotchi 3D Configurator</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap"
+      rel="stylesheet"
+    />
 
     <style>
       /* Styles du loader global */
@@ -35,8 +38,12 @@
       }
 
       @keyframes spin {
-        0% { transform: rotate(0deg); }
-        100% { transform: rotate(360deg); }
+        0% {
+          transform: rotate(0deg);
+        }
+        100% {
+          transform: rotate(360deg);
+        }
       }
 
       #progress-bar-container {
@@ -59,15 +66,27 @@
         color: #f700ff;
       }
     </style>
-  <script type="module" crossorigin src="/tamagotchi/assets/index-D-89dPL6.js"></script>
-  <link rel="stylesheet" crossorigin href="/tamagotchi/assets/index-CrHNLx0O.css">
-</head>
-<body>
+    <script
+      type="module"
+      crossorigin
+      src="/tamagotchi/assets/index-Cd5y1WHY.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      crossorigin
+      href="/tamagotchi/assets/index-CrHNLx0O.css"
+    />
+  </head>
+  <body>
     <!-- Loader global avec barre de progression -->
     <div id="global-loader">
-      <img src="./logos/logo-mocha.png" alt="Tamagotchi Logo" style="width: 200px;" />
+      <img
+        src="./logos/logo-mocha.png"
+        alt="Tamagotchi Logo"
+        style="width: 200px"
+      />
       <div class="loader"></div>
-      
+
       <p>Loading...</p>
       <div id="progress-bar-container">
         <div id="progress-bar"></div>
@@ -76,15 +95,13 @@
     </div>
 
     <!-- L'élément root pour React -->
-    <div id="root" style="display:none;"></div>
-
-
+    <div id="root" style="display: none"></div>
 
     <!-- Script pour gérer la progression du chargement -->
     <script>
       let progress = 0;
-      const progressBar = document.getElementById('progress-bar');
-      const percentageText = document.getElementById('percentage');
+      const progressBar = document.getElementById("progress-bar");
+      const percentageText = document.getElementById("percentage");
 
       // Fonction pour mettre à jour la barre de progression
       function updateProgress() {
@@ -105,15 +122,15 @@
 
       // Cette fonction permet de suivre le chargement réel de tous les assets
       function onLoadComplete() {
-        progress = 100;  // Fixe la progression à 100% quand tout est chargé
-        progressBar.style.width = '100%';
-        percentageText.innerText = '100%';
+        progress = 100; // Fixe la progression à 100% quand tout est chargé
+        progressBar.style.width = "100%";
+        percentageText.innerText = "100%";
 
         // Une fois le chargement terminé, cache le loader global
         setTimeout(() => {
-          document.getElementById("global-loader").style.display = "none"; 
-          document.getElementById("root").style.display = "block"; 
-        }, 500);  // Petit délai pour voir la barre se remplir avant de masquer
+          document.getElementById("global-loader").style.display = "none";
+          document.getElementById("root").style.display = "block";
+        }, 500); // Petit délai pour voir la barre se remplir avant de masquer
       }
 
       // Lancer le calcul de la progression dès que le DOM est prêt
@@ -122,5 +139,5 @@
       // Attendre la fin du chargement des ressources critiques comme les scripts
       window.onload = onLoadComplete;
     </script>
-</body>
+  </body>
 </html>
