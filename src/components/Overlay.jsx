@@ -6,16 +6,7 @@ export default function Overlay() {
     useTamagotchiStore();
 
   return (
-    <div
-      style={{
-        position: "absolute",
-        top: 0,
-        left: 0,
-        pointerEvents: "none",
-        width: "100%",
-        height: "100%",
-      }}
-    >
+    <div className="overlay">
       {/* Lien LinkedIn */}
       <a
         href="https://www.linkedin.com/in/aureliepreaud/"
@@ -114,6 +105,7 @@ export default function Overlay() {
           </label>
         </div>
       </div>
+    {/* Fin Overlay*/}
     </div>
   );
 }

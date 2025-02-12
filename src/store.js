@@ -13,6 +13,7 @@ export const useTamagotchiStore = create((set) => ({
 
   logoUrl: "./logos/logo-mocha.png",
   frameCount: 26,
+  bgUrl: "./backgrounds/bg-mocha.png",
 
   toggleAutoRotate: () => set((state) => ({ autoRotate: !state.autoRotate })),
 
@@ -25,6 +26,7 @@ export const useTamagotchiStore = create((set) => ({
         ring: "#bd8a5b",
         button: "#FFFFFF",
         logo: "./logos/logo-mocha.png",
+        background: "./backgrounds/bg-mocha.png",
       },
       fruty: {
         main: "./textures/fruty/fruty_main.png",
@@ -33,6 +35,7 @@ export const useTamagotchiStore = create((set) => ({
         ring: "#27a510",
         button: "#27a510",
         logo: "./logos/logo-fruty.png",
+        background: "./backgrounds/bg-fruty.png",
       },
       egg: {
         main: "./textures/chick/chick_main.png",
@@ -41,6 +44,7 @@ export const useTamagotchiStore = create((set) => ({
         ring: "#FFFACD",
         button: "#ffb700",
         logo: "./logos/logo-eggs.png",
+        background: "./backgrounds/bg-egg.png",
       },
       tea: {
         main: "./textures/tea/tea_main.png",
@@ -49,6 +53,7 @@ export const useTamagotchiStore = create((set) => ({
         ring: "#98FB98",
         button: "#27a510",
         logo: "./logos/logo-green.png",
+        background: "./backgrounds/bg-tea.png",
       },
     };
 
@@ -63,6 +68,7 @@ export const useTamagotchiStore = create((set) => ({
         },
         logoUrl: themes[theme].logo,
         frameCount: themes[theme].frameCount,
+        bgUrl: themes[theme].background,
       });
     } else {
       console.warn(`⚠️ Thème inconnu : ${theme}`);

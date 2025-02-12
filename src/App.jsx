@@ -6,11 +6,14 @@ import { useTamagotchiStore } from "./store"; // Penser à importer et installer
 import TamagotchiCusto from "./components/TamagotchiCusto";
 import Env from "./components/Env";
 import Loader from "./components/Loader";
+import Background from "./components/Background";
 
 export default function App() {
   const autoRotate = useTamagotchiStore((state) => state.autoRotate); // Etat global pour gérer le bouton switch pour la rotation automatique
+  
 
   return (
+    <>
     <Canvas shadows camera={{ position: [0, 0, 6], fov: 25 }}>
       <Suspense fallback={<Loader />}>
         {/* Affiche la barre de progression avant de rendre le contenu */}
@@ -31,5 +34,7 @@ export default function App() {
         maxPolarAngle={Math.PI / 2.1}
       />
     </Canvas>
+    <Background  />
+    </>
   );
 }
