@@ -6,26 +6,36 @@ import {
 } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useTamagotchiStore } from "../store";
 
 export default function TamagotchiCusto(props) {
   const { textures, frameCount } = useTamagotchiStore();
   const { scene } = useGLTF("./models/Tamagotchi/tamagotchi-custom.glb");
 
-  // Chargement des textures avec vérification
+  // États pour gérer l'affichage de l'écran
+  const [isSleeping, setIsSleeping] = useState(false);
+  const [isEating, setIsEating] = useState(false);
+
+  // Déterminer la texture active
+  const currentScreen = isSleeping
+    ? textures.sleep
+    : isEating
+    ? textures.eat
+    : textures.screen;
+
+  // Chargement des textures
   const mainTexture = textures.main
     ? useLoader(TextureLoader, textures.main)
     : null;
-  const screenTextures = textures.screen
-    ? useLoader(
-        TextureLoader,
-        Array.from(
-          { length: frameCount },
-          (_, i) => `${textures.screen}${String(i + 1).padStart(4, "0")}.png`
-        )
-      )
-    : [];
+
+  const screenTextures = useLoader(
+    TextureLoader,
+    Array.from(
+      { length: frameCount },
+      (_, i) => `${currentScreen}${String(i + 1).padStart(4, "0")}.png`
+    )
+  );
 
   if (screenTextures.length > 0) {
     screenTextures.forEach((texture) => {
@@ -52,7 +62,7 @@ export default function TamagotchiCusto(props) {
     return () => clearInterval(interval);
   }, [screenTextures]);
 
-  // Appliquer les textures et couleurs au modèle
+  // Gestion du clic sur les boutons
   useEffect(() => {
     if (!scene) return;
 
@@ -86,9 +96,36 @@ export default function TamagotchiCusto(props) {
               break;
           }
         });
+
+        // Détection des boutons cliquables
+        if (["bouton1", "bouton2", "bouton3"].includes(child.name)) {
+          child.userData.clickable = true;
+        }
       }
     });
   }, [scene, mainTexture, screenTextures, textures]);
+
+  // Fonction pour gérer le clic sur les boutons
+  const handlePointerDown = (event) => {
+    const clickedButton = event.object.name;
+
+    switch (clickedButton) {
+      case "bouton1":
+        setIsSleeping((prev) => !prev);
+        setIsEating(false);
+        break;
+      case "bouton2":
+        setIsEating(true);
+        setIsSleeping(false);
+        break;
+      case "bouton3":
+        setIsEating(false);
+        setIsSleeping(false);
+        break;
+      default:
+        break;
+    }
+  };
 
   return (
     <Float
@@ -100,7 +137,12 @@ export default function TamagotchiCusto(props) {
       <Center top>
         <PresentationControls global rotation={[0, 0.3, 0]}>
           {scene ? (
-            <primitive {...props} object={scene} castShadow />
+            <primitive
+              {...props}
+              object={scene}
+              castShadow
+              onPointerDown={handlePointerDown}
+            />
           ) : (
             <p>Modèle non chargé...</p>
           )}

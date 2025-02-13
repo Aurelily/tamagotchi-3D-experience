@@ -7,6 +7,8 @@ export const useTamagotchiStore = create((set) => ({
   textures: {
     main: "./textures/cat/cat_main.png",
     screen: "./textures/cat/cat",
+    sleep: "./textures/cat/sleep/cat-sleep",
+    eat: "./textures/cat/eat/cat-eat",
     ring: "#8B5A2B",
     button: "#FFFFFF",
   },
@@ -22,8 +24,10 @@ export const useTamagotchiStore = create((set) => ({
       mocha: {
         main: "./textures/cat/cat_main.png",
         screen: "./textures/cat/cat",
+        sleep: "./textures/cat/sleep/cat-sleep",
+        eat: "./textures/cat/eat/cat-eat",
         frameCount: 26,
-        ring: "#bd8a5b",
+        ring: "#8B5A2B",
         button: "#FFFFFF",
         logo: "./logos/logo-mocha.png",
         background: "./backgrounds/bg-mocha.png",
@@ -31,6 +35,8 @@ export const useTamagotchiStore = create((set) => ({
       fruty: {
         main: "./textures/fruty/fruty_main.png",
         screen: "./textures/fruty/fruty",
+        sleep: "./textures/fruty/sleep/fruty-sleep",
+        eat: "./textures/fruty/eat/fruty-eat",
         frameCount: 43,
         ring: "#27a510",
         button: "#27a510",
@@ -40,6 +46,8 @@ export const useTamagotchiStore = create((set) => ({
       egg: {
         main: "./textures/chick/chick_main.png",
         screen: "./textures/chick/chick",
+        sleep: "./textures/chick/sleep/chick-sleep",
+        eat: "./textures/chick/eat/chick-eat",
         frameCount: 52,
         ring: "#FFFACD",
         button: "#ffb700",
@@ -49,6 +57,8 @@ export const useTamagotchiStore = create((set) => ({
       tea: {
         main: "./textures/tea/tea_main.png",
         screen: "./textures/tea/tea",
+        sleep: "./textures/tea/sleep/tea-sleep",
+        eat: "./textures/tea/eat/tea-eat",
         frameCount: 26,
         ring: "#98FB98",
         button: "#27a510",
@@ -63,6 +73,8 @@ export const useTamagotchiStore = create((set) => ({
         textures: {
           main: themes[theme].main,
           screen: themes[theme].screen,
+          sleep: themes[theme].sleep,
+          eat: themes[theme].eat,
           ring: themes[theme].ring,
           button: themes[theme].button,
         },
@@ -74,4 +86,6 @@ export const useTamagotchiStore = create((set) => ({
       console.warn(`⚠️ Thème inconnu : ${theme}`);
     }
   },
+
+  
 }));
