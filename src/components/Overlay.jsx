@@ -79,6 +79,14 @@ export default function Overlay() {
             <br />
             and manipulate the model!
           </p>
+          <img src="./infos.png" alt="Infos" style={{
+            width: "70%",
+        }} />
+          <p>
+            You can play with the buttons to change
+            <br />
+            the animation of your creature !
+          </p>
         </div>
         {/* Gros bouton pour la rotation */}
         <div className="button-rotation">
