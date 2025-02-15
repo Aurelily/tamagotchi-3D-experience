@@ -36,17 +36,14 @@ export default function Overlay() {
   return (
     <div className="overlay">
       {/* Lien LinkedIn */}
-      <a
-        href="https://www.linkedin.com/in/aureliepreaud/"
-        className="linkedin-link"
+    <p className="linkedin-link"
         style={{
           position: "absolute",
           bottom: 30,
           left: 30,
           fontSize: "13px",
           pointerEvents: "auto",
-        }}
-      >
+        }}>
         <p>
           <b>
             Created by Aurelie PREAUD for{" "}
@@ -57,11 +54,14 @@ export default function Overlay() {
         <p>
           I'm open for working on your 3D / ThreeJS project,
           <br />
-          Contact me by LinkedIn
+          Contact me by LinkedIn or Behance.
+          <br />Watch the code on my GitHub.
         </p>
-        <img src="./linkedin.png" alt="linkedin" width={30} />
-      </a>
-
+        <a href="https://www.linkedin.com/in/aureliepreaud/"><img src="./linkedin.png" alt="linkedin" width={30} /></a>
+        <a href="https://www.behance.net/aureliepreaud"><img src="./behance.png" alt="behance" width={30} /></a>
+        <a href="https://github.com/Aurelily/tamagotchi-3D-experience"><img src="./github.png" alt="github" width={30} /></a>
+     
+        </p>
       {/* Conteneur du menu */}
       <div className="menu-container" style={{ pointerEvents: "auto" }}>
         <div className="configurator-bg">
