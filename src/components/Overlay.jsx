@@ -1,9 +1,37 @@
 import { useTamagotchiStore } from "../store";
+import { useState, useEffect } from "react";
 import "../style.css"; // Importation des styles CSS
 
 export default function Overlay() {
   const { autoRotate, toggleAutoRotate, setTheme, logoUrl } =
     useTamagotchiStore();
+
+  const themes = ["mocha", "fruty", "egg", "tea"];
+  const [hoveredTheme, setHoveredTheme] = useState(null);
+  const [isMusicPlaying, setIsMusicPlaying] = useState(false);
+  const [audio] = useState(() => {
+    const sound = new Audio("./sounds/music.mp3");
+    sound.loop = true;
+    return sound;
+  });
+
+  // Gestion du démarrage et de l'arrêt de la musique
+  const toggleMusic = () => {
+    if (isMusicPlaying) {
+      audio.pause();
+      audio.currentTime = 0;
+    } else {
+      audio.play();
+    }
+    setIsMusicPlaying(!isMusicPlaying);
+  };
+
+  // Arrêter la musique si le composant est démonté
+  useEffect(() => {
+    return () => {
+      audio.pause();
+    };
+  }, [audio]);
 
   return (
     <div className="overlay">
@@ -20,7 +48,11 @@ export default function Overlay() {
         }}
       >
         <p>
-          <b>Created by Aurelie PREAUD</b>
+          <b>
+            Created by Aurelie PREAUD for{" "}
+            <a href="https://threejs-journey.com/">ThreeJs Journey's</a>{" "}
+            Challenge
+          </b>
         </p>
         <p>
           I'm open for working on your 3D / ThreeJS project,
@@ -36,12 +68,16 @@ export default function Overlay() {
           <img className="logo-dynamique" src={logoUrl} alt="Tamagotchi Logo" />
 
           <div className="buttons-container">
-            {["mocha", "fruty", "egg", "tea"].map((theme) => (
+            {themes.map((theme) => (
               <img
                 key={theme}
-                src={`./buttons/bt-${theme}.png`}
+                src={`./buttons/bt-${
+                  hoveredTheme === theme ? `${theme}-hover` : theme
+                }.png`}
                 alt={theme}
                 onClick={() => setTheme(theme)}
+                onMouseEnter={() => setHoveredTheme(theme)}
+                onMouseLeave={() => setHoveredTheme(null)}
                 className="theme-button"
               />
             ))}
@@ -79,13 +115,17 @@ export default function Overlay() {
             <br />
             and manipulate the model!
           </p>
-          <img src="./infos.png" alt="Infos" style={{
-            width: "70%",
-        }} />
+          <img
+            src="./infos.png"
+            alt="Infos"
+            style={{
+              width: "70%",
+            }}
+          />
           <p>
             You can play with the buttons to change
             <br />
-            the animation of your creature !
+            the animation of your creature!
           </p>
         </div>
         {/* Gros bouton pour la rotation */}
@@ -112,8 +152,33 @@ export default function Overlay() {
             </div>
           </label>
         </div>
+
+        {/* Gros bouton pour la musique */}
+        <div className="button-music">
+          <label>
+            <span style={{ marginRight: "10px" }}>
+              {isMusicPlaying ? "Disable music" : "Enable music"}
+            </span>
+
+            {/* Switch Toggle */}
+            <div
+              className="switch-toggle"
+              onClick={toggleMusic}
+              style={{
+                background: isMusicPlaying ? "#ffcc00" : "#ccc",
+              }}
+            >
+              <div
+                className="swith-toggle-cercle"
+                style={{
+                  left: isMusicPlaying ? "26px" : "4px",
+                }}
+              />
+            </div>
+          </label>
+        </div>
       </div>
-    {/* Fin Overlay*/}
+      {/* Fin Overlay */}
     </div>
   );
 }

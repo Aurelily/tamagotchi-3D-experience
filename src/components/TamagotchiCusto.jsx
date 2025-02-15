@@ -62,7 +62,7 @@ export default function TamagotchiCusto(props) {
     return () => clearInterval(interval);
   }, [screenTextures]);
 
-  // Gestion du clic sur les boutons
+  // Appliquer les textures et couleurs aux matériaux du modèle
   useEffect(() => {
     if (!scene) return;
 
@@ -97,7 +97,7 @@ export default function TamagotchiCusto(props) {
           }
         });
 
-        // Détection des boutons cliquables
+        // Marquer les boutons comme cliquables
         if (["bouton1", "bouton2", "bouton3"].includes(child.name)) {
           child.userData.clickable = true;
         }
@@ -105,7 +105,13 @@ export default function TamagotchiCusto(props) {
     });
   }, [scene, mainTexture, screenTextures, textures]);
 
-  // Fonction pour gérer le clic sur les boutons
+  // Fonction pour jouer un son
+  const playSound = (soundFile) => {
+    const audio = new Audio(`./sounds/${soundFile}.mp3`);
+    audio.play();
+  };
+
+  // Gestion du clic sur les boutons avec son
   const handlePointerDown = (event) => {
     const clickedButton = event.object.name;
 
@@ -113,14 +119,17 @@ export default function TamagotchiCusto(props) {
       case "bouton1":
         setIsSleeping((prev) => !prev);
         setIsEating(false);
+        playSound("sleep");
         break;
       case "bouton2":
         setIsEating(true);
         setIsSleeping(false);
+        playSound("eat");
         break;
       case "bouton3":
         setIsEating(false);
         setIsSleeping(false);
+        playSound("play");
         break;
       default:
         break;

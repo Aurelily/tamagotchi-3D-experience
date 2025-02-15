@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tamagotchi 3D Configurator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap" rel="stylesheet">
+
+    <style>
+      /* Styles du loader global */
+      #global-loader {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255, 255, 255, 0.8);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+      }
+
+      .loader {
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #ffcc00;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+      }
+
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+
+      #progress-bar-container {
+        width: 80%;
+        background-color: #f3f3f3;
+        margin-top: 20px;
+        border-radius: 5px;
+      }
+
+      #progress-bar {
+        height: 8px;
+        background-color: #f700ff;
+        border-radius: 5px;
+        width: 0;
+      }
+
+      #percentage {
+        margin-top: 10px;
+        font-weight: bold;
+        color: #f700ff;
+      }
+    </style>
+  <script type="module" crossorigin src="/tamagotchi/assets/index-BWUaYaqU.js"></script>
+  <link rel="stylesheet" crossorigin href="/tamagotchi/assets/index-CuUHeFCf.css">
+</head>
+<body>
+    <!-- Loader global avec barre de progression -->
+    <div id="global-loader">
+      <img src="./logos/logo-mocha.png" alt="Tamagotchi Logo" style="width: 200px;" />
+      <div class="loader"></div>
+      
+      <p>Loading...</p>
+      <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+      </div>
+      <p id="percentage">0%</p>
+    </div>
+
+    <!-- L'élément root pour React -->
+    <div id="root" style="display:none;"></div>
+
+
+
+    <!-- Script pour gérer la progression du chargement -->
+    <script>
+      let progress = 0;
+      const progressBar = document.getElementById('progress-bar');
+      const percentageText = document.getElementById('percentage');
+
+      // Fonction pour mettre à jour la barre de progression
+      function updateProgress() {
+        if (progress < 100) {
+          progress += Math.random() * 3; // Incrémentation plus rapide
+          if (progress > 100) progress = 100;
+
+          // Mise à jour de la largeur de la barre
+          progressBar.style.width = `${progress}%`;
+
+          // Mise à jour du pourcentage affiché
+          percentageText.innerText = `${Math.round(progress)}%`;
+
+          // Répétition de cette fonction jusqu'à 100%
+          setTimeout(updateProgress, 50);
+        }
+      }
+
+      // Cette fonction permet de suivre le chargement réel de tous les assets
+      function onLoadComplete() {
+        progress = 100;  // Fixe la progression à 100% quand tout est chargé
+        progressBar.style.width = '100%';
+        percentageText.innerText = '100%';
+
+        // Une fois le chargement terminé, cache le loader global
+        setTimeout(() => {
+          document.getElementById("global-loader").style.display = "none"; 
+          document.getElementById("root").style.display = "block"; 
+        }, 500);  // Petit délai pour voir la barre se remplir avant de masquer
+      }
+
+      // Lancer le calcul de la progression dès que le DOM est prêt
+      updateProgress();
+
+      // Attendre la fin du chargement des ressources critiques comme les scripts
+      window.onload = onLoadComplete;
+    </script>
+</body>
+</html>
