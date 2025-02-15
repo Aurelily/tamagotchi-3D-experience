@@ -50,7 +50,7 @@ export default function Overlay() {
         <p>
           <b>
             Created by Aurelie PREAUD for{" "}
-            <a href="https://threejs-journey.com/">ThreeJs Journey's</a>{" "}
+            <a href="https://threejs-journey.com/" target="_blank">ThreeJs Journey's</a>{" "}
             Challenge
           </b>
         </p>
@@ -95,7 +95,8 @@ export default function Overlay() {
           fontSize: "13px",
         }}
       >
-        Blender3D - ThreeJS - R3F - February 2025
+       <p>Blender3D - ThreeJS - R3F - February 2025 <br />
+       Music by : <a href="https://www.audiocoffee.net" target="_blank">AudioCoffee</a></p>
       </div>
       <div
         className="footer"
