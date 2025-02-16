@@ -3,6 +3,7 @@ Tamagotchi Configurator – A Fun & Interactive 3D Experience! 🎮🐣
   
 📆 Build in : February 2025.   
 🖥 Type : ReactJS / React Three Fiber / ThreeJS webGL 3D web project.
+
 ✨ Context : Made for [ThreeJS Journey](https://threejs-journey.com/) Challenge February 2025  
 
 🚀 You can watch and try online [Here](https://design-dev.net/tamagotchi/)!
