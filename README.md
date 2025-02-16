@@ -23,7 +23,6 @@ Hope you enjoy playing with it! 🚀🐾
 
 
 ---
-<img src="https://design-dev.net/images-github/tamagotchi/planche.png"  alt="Design">
 <table>
   <tr>
     <td><img src="https://design-dev.net/images-github/tamagotchi/planches-mocha.png"  alt="Mocha"></td>
