@@ -1,9 +1,4 @@
-import {
-  useGLTF,
-  PresentationControls,
-  Center,
-  Float,
-} from "@react-three/drei";
+import { useGLTF, Center, Float } from "@react-three/drei";
 import { useLoader } from "@react-three/fiber";
 import { TextureLoader } from "three";
 import { useEffect, useRef, useState } from "react";
@@ -113,8 +108,9 @@ export default function TamagotchiCusto(props) {
 
   // Gestion du clic sur les boutons avec son
   const handlePointerDown = (event) => {
-    const clickedButton = event.object.name;
+    document.body.style.cursor = "grabbing"; // Curseur "grabbing" pendant le clic
 
+    const clickedButton = event.object.name;
     switch (clickedButton) {
       case "bouton1":
         setIsSleeping((prev) => !prev);
@@ -136,6 +132,21 @@ export default function TamagotchiCusto(props) {
     }
   };
 
+  // Gestion du relâchement du clic
+  const handlePointerUp = () => {
+    document.body.style.cursor = "grab"; // Curseur "grab" après avoir relâché
+  };
+
+  // Gestion du survol du modèle
+  const handlePointerOver = () => {
+    document.body.style.cursor = "grab"; // Curseur "grab" quand la souris passe dessus
+  };
+
+  // Gestion de la sortie de la souris du modèle
+  const handlePointerOut = () => {
+    document.body.style.cursor = "auto"; // Curseur par défaut quand la souris sort
+  };
+
   return (
     <Float
       speed={3}
@@ -143,19 +154,20 @@ export default function TamagotchiCusto(props) {
       floatIntensity={0.5}
       floatingRange={[-0.1, 0]}
     >
-      <Center top>
-        <PresentationControls global rotation={[0, 0.3, 0]}>
-          {scene ? (
-            <primitive
-              {...props}
-              object={scene}
-              castShadow
-              onPointerDown={handlePointerDown}
-            />
-          ) : (
-            <p>Modèle non chargé...</p>
-          )}
-        </PresentationControls>
+      <Center>
+        {scene ? (
+          <primitive
+            {...props}
+            object={scene}
+            castShadow
+            onPointerDown={handlePointerDown}
+            onPointerUp={handlePointerUp}
+            onPointerOver={handlePointerOver}
+            onPointerOut={handlePointerOut}
+          />
+        ) : (
+          <p>Modèle non chargé...</p>
+        )}
       </Center>
     </Float>
   );
