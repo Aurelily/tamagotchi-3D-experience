@@ -36,18 +36,22 @@ export default function Overlay() {
   return (
     <div className="overlay">
       {/* Lien LinkedIn */}
-    <p className="linkedin-link"
+      <p
+        className="linkedin-link"
         style={{
           position: "absolute",
           bottom: 30,
           left: 30,
-          fontSize: "13px",
+          fontSize: "10px",
           pointerEvents: "auto",
-        }}>
+        }}
+      >
         <p>
           <b>
             Created by Aurelie PREAUD for{" "}
-            <a href="https://threejs-journey.com/" target="_blank">ThreeJs Journey's</a>{" "}
+            <a href="https://threejs-journey.com/" target="_blank">
+              ThreeJs Journey's
+            </a>{" "}
             Challenge
           </b>
         </p>
@@ -55,13 +59,19 @@ export default function Overlay() {
           I'm open for working on your 3D / ThreeJS project,
           <br />
           Contact me by LinkedIn or Behance.
-          <br />Watch the code on my GitHub.
+          <br />
+          Watch the code on my GitHub.
         </p>
-        <a href="https://www.linkedin.com/in/aureliepreaud/"><img src="./linkedin.png" alt="linkedin" width={30} /></a>
-        <a href="https://www.behance.net/aureliepreaud"><img src="./behance.png" alt="behance" width={30} /></a>
-        <a href="https://github.com/Aurelily/tamagotchi-3D-experience"><img src="./github.png" alt="github" width={30} /></a>
-     
-        </p>
+        <a href="https://www.linkedin.com/in/aureliepreaud/">
+          <img src="./linkedin.png" alt="linkedin" width={30} />
+        </a>
+        <a href="https://www.behance.net/aureliepreaud">
+          <img src="./behance.png" alt="behance" width={30} />
+        </a>
+        <a href="https://github.com/Aurelily/tamagotchi-3D-experience">
+          <img src="./github.png" alt="github" width={30} />
+        </a>
+      </p>
       {/* Conteneur du menu */}
       <div className="menu-container" style={{ pointerEvents: "auto" }}>
         <div className="configurator-bg">
@@ -92,11 +102,16 @@ export default function Overlay() {
           position: "absolute",
           bottom: 30,
           right: 30,
-          fontSize: "13px",
+          fontSize: "10px",
         }}
       >
-       <p>Blender3D - ThreeJS - R3F - February 2025 <br />
-       Music by : <a href="https://www.audiocoffee.net" target="_blank">AudioCoffee</a></p>
+        <p>
+          Blender3D - ThreeJS - R3F - February 2025 <br />
+          Music by :{" "}
+          <a href="https://www.audiocoffee.net" target="_blank">
+            AudioCoffee
+          </a>
+        </p>
       </div>
       <div
         className="footer"
